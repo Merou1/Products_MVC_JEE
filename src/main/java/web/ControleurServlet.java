@@ -24,11 +24,8 @@ public class ControleurServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String mc = request.getParameter("motCle");
-		ProduitModele mod = new ProduitModele();
-		mod.setMotCle(mc);
 		List<Produit> prods = metier.getProduitsParMotCle(mc);
-		mod.setProduits(prods);
-		request.setAttribute("modele", mod);
+		request.setAttribute("products", prods);
 		request.getRequestDispatcher("ProduitsView.jsp").forward(request, response);
 	}
 }
